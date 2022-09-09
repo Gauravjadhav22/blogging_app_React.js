@@ -56,7 +56,7 @@ const Nav = () => {
                 !auth?.accessToken && !persist &&
                 <div className='flex-0 flex mt-4 items-stretch justify-center'>
                     <Link to='/login'>
-                        <button className='bg-blue-600 p-2 mr-4 rounded-lg text-white hover:bg-blue-400'>
+                        <button className='bg-gren-600 p-2 mr-4 rounded-lg text-white hover:bg-blue-400'>
 
                             Sign In
                         </button>
