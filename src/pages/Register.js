@@ -151,7 +151,7 @@ const Register = () => {
     return (
         <>
             {success ? (
-                <section className=' text-xl flex flex-col justify-center items-center '>
+                <section className=' text-center mb-4 text-xl flex flex-col justify-center items-center '>
                     <h1 >Success!</h1>
                     <p>
                         <a href="/login" className='bg-blue-600 p-4 text-white text-center'>Sign In</a>

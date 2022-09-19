@@ -18,7 +18,7 @@ const Feed = () => {
 
 
   return (
-    <div className='m-0 bg-slate-700 backdrop-blur-3xl mx-4'>
+    <div className='bg-slate-900 bg-opacity-90 backdrop-blur-3xl '>
       {!auth?.user?.username && <div className='text-white text-xl text-center capitalize' >"you need to be a 
       valid user to comment and upload blogs"
       <br/>

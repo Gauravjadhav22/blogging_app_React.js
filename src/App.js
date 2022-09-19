@@ -32,7 +32,7 @@ const App = () => {
 
 
   return (
-    <div>
+    <div > 
       <Header />
       <Routes>
         <Route path="/"  >

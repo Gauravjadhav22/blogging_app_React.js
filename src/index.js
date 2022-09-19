@@ -6,15 +6,18 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import { AuthProvider } from './context/AuthProvider';
 import { BlogsProvider } from './context/BlogsProvider';
+// import { CommentsProvider } from './context/CommentsProvider';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Router>
       <AuthProvider>
       <BlogsProvider>
+      {/* <CommentsProvider> */}
           <Routes>
             <Route path="/*" element={<App />} />
           </Routes>
+      {/* </CommentsProvider> */}
       </BlogsProvider>
       </AuthProvider>
     </Router>

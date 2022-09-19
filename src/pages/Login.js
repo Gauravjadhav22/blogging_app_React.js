@@ -110,7 +110,7 @@ const Login = () => {
             {
                 isLoading ? (<IsLoading/>) : (
                     <section className="h-fit ">
-                        <div className=" px-6 py-12 h-full">
+                        <div className=" px-6 py-12 h-full text-center mb-4">
                             <p
                                 ref={errRef}
                                 className={`text-red-700 text-4xl ${errMsg ? "visible" : "invisible"}`}

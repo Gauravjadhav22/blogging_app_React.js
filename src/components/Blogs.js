@@ -8,7 +8,6 @@ import useAuth from "../hooks/useAuth"
 import useAxiosPrivate from "../hooks/useAxiosPrivate"
 import Comments from "./Comments"
 import BlogsContext from "../context/BlogsProvider"
-const BASE_URL = '/api/blogs'
 const BASE_URL_PERSONAL = '/api/personalblogs'
 const BASE_URL_COMMENT = '/api/comment'
 
@@ -47,7 +46,8 @@ const Blogs = () => {
         try {
             const response = await axios.post(`${BASE_URL_COMMENT}/`, { content: comment, userId: auth.user.userId, blog: blogId })
             setComment("")
-            setUpdateCmt(current => [...current, response.data.comment]);
+
+            setUpdateCmt(current => [...current, {cmt:response.data.comment,id:blogId}]);
 
         } catch (error) {
 
@@ -103,18 +103,18 @@ const Blogs = () => {
                 {
                     updatebox && <div className="absolute  flex flex-col items-center justify-center border-4 bg-slate-300 w-full h-full m-0 left-0 right-0 top-0">
                         Enter Content
-                        <input onChange={(e) => setNewContent(e.target.value)} types='text' className="h-fit text-xl w-80 p-1" />
+                        <input onChange={(e) => setNewContent(e.target.value)} types='text' className="h-fit text-xl w-80 " />
                         <button onClick={() => changeContent()} className="bg-green-700 text-white p-2 mt-5">Update Content</button>
                     </div>
                 }
             </div>
-            <div className='flex flex-col items-center xl:w-144 lg:w-128 md:w-96 sm:w-80'>
+            <div className='flex flex-col items-center xl:w-144 lg:w-128 md:w-96 sm:w-80 '>
 
 
                 {
                     blogs?.map(item => {
                         return <>
-                            <div key={item._id} className={`${updatebox ? "hidden" : "visible"} px-2 flex flex-col items-stretch w-full h-full text-center my-8 bg-gray-400 transition rounded-xl shadow-2xl`} >
+                            <div key={item._id} className={`${updatebox ? "hidden" : "visible"} p-2 flex flex-col items-stretch w-full h-full text-center my-8 bg-gray-200 transition rounded-xl shadow-black shadow-xl`} >
                                 <div className=' w-full bg-amber-100 flex justify-between items-center px-4'>
                                     {item.user === auth?.user?.userId &&
                                         <div style={{ marginLeft: "-22px" }} className="m-3 w-fit text-left text-white rounded-xl flex justify-start items-center">
@@ -158,14 +158,14 @@ const Blogs = () => {
 
 
 
-                                            <Comments update={updateCmt}  setUpdate={setUpdateCmt} key={item._id} id={item._id} />
+                                            <Comments update={updateCmt} cmt={comment} setUpdate={setUpdateCmt} key={item._id} id={item._id} />
 
 
 
                                         </div>
                                         {auth?.accessToken &&
-                                            <div className='shadow-gray-400 mb-4 flex items-center shadow xl:w-96 lg:w-92 md:w-80 sm:w-72'>
-                                                <input value={comment} onChange={(e) => setComment(e.target.value)} type='text' placeholder='wow! Amazing Stuff' className='xl:w-144 lg:w-128 md:w-96 sm:w-64  p-2' /> <TbSend className='text-6xl border-2 border-gray-200 border-none' onClick={() => addComment(item._id)} />
+                                            <div className='bg-gray-300 pl-2  shadow-gray-700 mb-4 flex items-center shadow xl:w-96 lg:w-92 md:w-80 sm:w-72 justify-center'>
+                                                <input value={comment} onChange={(e) => setComment(e.target.value)} type='text' placeholder='wow! Amazing Stuff' className='xl:w-144 lg:w-128 md:w-96 sm:w-64 p-2 shadow-lg h-12' /> <TbSend className='text-6xl rounded-xl' onClick={() => addComment(item._id)} />
                                             </div>
                                         }
                                     </div>

@@ -22,8 +22,8 @@ const FindUser = () => {
 
     return (
 
-        <div className='main'>
-            {foundUser?.username ? <> <div className='flex justify-center flex-col items-center my-8'>
+        <div className='bg-slate-900 bg-opacity-90'>
+            {foundUser?.username ? <> <div className='flex justify-center flex-col items-center '>
                 <div style={{ boxShadow: "1px 1px 8px #3333" }} className='overflow-hidden p-3 w-80 h-80'>
 
                     {!userBlogs?.picture ? (
@@ -88,7 +88,7 @@ const FindUser = () => {
                 </div>
             </> : <div className='text-white text-center text-xl'>
                 user Not Found
-                
+
             </div>}
 
 

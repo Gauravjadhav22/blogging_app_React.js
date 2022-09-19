@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 
-@layer components {
-    body{
+@layer base {
+    .main{
 
-        @apply bg-gray-300;
+        @apply !bg-white;
     }
   }

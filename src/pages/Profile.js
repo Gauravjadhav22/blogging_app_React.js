@@ -122,8 +122,8 @@ const Profile = () => {
 
   return (
 
-    <div className='main'>
-      <div className='flex justify-center flex-col items-center my-8'>
+    <div className='bg-slate-900 bg-opacity-90'>
+      <div className='flex justify-center flex-col items-center '>
         <div style={{ boxShadow: "1px 1px 8px #3333" }} className='overflow-hidden p-3 w-80 h-80'>
           <label for="upload-photo">
             <BsPlusCircle className=' absolute ml-14 top-80 mt-6 text-5xl bg-amber-50 rounded-full' />
