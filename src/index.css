@@ -4,8 +4,8 @@
 
 
 @layer components {
-    .main{
+    body{
 
-        @apply bg-slate-700 mx-10 py-5;
+        @apply bg-gray-300;
     }
   }

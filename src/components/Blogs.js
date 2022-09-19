@@ -108,13 +108,13 @@ const Blogs = () => {
                     </div>
                 }
             </div>
-            <div className='flex flex-col items-center xl:w-144 lg:w-128 md:w-96 sm:w-80  '>
+            <div className='flex flex-col items-center xl:w-144 lg:w-128 md:w-96 sm:w-80'>
 
 
                 {
                     blogs?.map(item => {
                         return <>
-                            <div key={item._id} style={{ boxShadow: "2px 2px 8px #fff " }} className={`${updatebox ? "hidden" : "visible"} px-2 flex flex-col items-stretch bg-white w-full h-full border-2 border-blue-500 text-center my-8 transition`} >
+                            <div key={item._id} className={`${updatebox ? "hidden" : "visible"} px-2 flex flex-col items-stretch w-full h-full text-center my-8 bg-gray-400 transition rounded-xl shadow-2xl`} >
                                 <div className=' w-full bg-amber-100 flex justify-between items-center px-4'>
                                     {item.user === auth?.user?.userId &&
                                         <div style={{ marginLeft: "-22px" }} className="m-3 w-fit text-left text-white rounded-xl flex justify-start items-center">
@@ -153,8 +153,8 @@ const Blogs = () => {
                                     </div>
                                 </div>
                                 <div className="flex justify-center">
-                                    <div className='px-32 p-4 pb-0 xl:w-128 lg:w-128 md:w-96 sm:w-72 h-96 flex flex-col justify-end items-center bg-purple-200'>
-                                        <div className='overflow-y-scroll mb-1 xl:w-128 lg:w-128 md:w-96 sm:w-80  '>
+                                    <div className='px-32 p-4 pb-0 xl:w-128 lg:w-128 md:w-96 sm:w-72 h-96 flex flex-col justify-end items-center '>
+                                        <div className='overflow-y-scroll mb-1 xl:w-128 lg:w-128 md:w-96 sm:w-80   '>
 
 
 
@@ -164,8 +164,8 @@ const Blogs = () => {
 
                                         </div>
                                         {auth?.accessToken &&
-                                            <div style={{ boxShadow: "1px 3px 5px" }} className='mb-4 flex items-center bg-white xl:w-96 lg:w-92 md:w-80 sm:w-72'>
-                                                <input value={comment} onChange={(e) => setComment(e.target.value)} type='text' placeholder='wow! Amazing Stuff' className='xl:w-144 lg:w-128 md:w-96 sm:w-64  p-2' /> <TbSend className='text-6xl border-2 border-gray-200' onClick={() => addComment(item._id)} />
+                                            <div className='shadow-gray-400 mb-4 flex items-center shadow xl:w-96 lg:w-92 md:w-80 sm:w-72'>
+                                                <input value={comment} onChange={(e) => setComment(e.target.value)} type='text' placeholder='wow! Amazing Stuff' className='xl:w-144 lg:w-128 md:w-96 sm:w-64  p-2' /> <TbSend className='text-6xl border-2 border-gray-200 border-none' onClick={() => addComment(item._id)} />
                                             </div>
                                         }
                                     </div>

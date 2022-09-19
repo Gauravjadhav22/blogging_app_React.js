@@ -9,10 +9,6 @@ const Comments = ({ id, update, setUpdate }) => {
     const { auth } = useAuth()
     const [comments, setComments] = useState([])
 
-
-
-
-
     useEffect(() => {
         let isMounted = true;
         const controller = new AbortController();
@@ -54,9 +50,6 @@ const Comments = ({ id, update, setUpdate }) => {
                     item._id !== id)
             )
 
-
-
-
             await axios.delete(`${BASE_URL_COMMENT}/${id}`,)
 
 
@@ -77,7 +70,7 @@ const Comments = ({ id, update, setUpdate }) => {
 
                 comments?.map(item => {
                     return (
-                        <div key={item._id} style={{ boxShadow: "1px 1px 5px #333 " }} className='transition p-3 bg-gray-100 break-words m-5 rounded-sm' >
+                        <div key={item._id}  className='transition p-3 bg-gray-300 break-words m-5 rounded-lg shadow-blue-400 shadow-lg ' >
                             {item.content}
                             <br />
                             <div className='flex justify-end items-center font-bold text-red-800 mt-2 w-fit'>
