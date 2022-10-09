@@ -162,7 +162,7 @@ const Profile = () => {
                   </div>
                 }
               </div>
-              <div key={item._id} style={{ boxShadow: "2px 2px 8px #fff " }} className={`${updatebox ? "hidden" : "visible"} px-2 flex flex-col items-stretch bg-white w-fit max-w-xl h-full border-2 border-blue-500 text-center my-8 transition`} >
+              <div key={item._id}  className={`${updatebox ? "hidden" : "visible"} p-2 bg-gray-200 rounded-xl shadow-black shadow-xl  px-2 flex flex-col items-stretch max-w-xl text-center  my-8 transition`} >
                 <div className=' w-full bg-amber-100 flex justify-between items-center px-4'>
                   {item.user === auth.user.userId &&
                     <div style={{ marginLeft: "-22px" }} className="m-3 w-fit text-left text-white rounded-xl flex justify-start items-center">

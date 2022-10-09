@@ -1,7 +1,7 @@
 import axios from "axios"
 
-// const BASE_URL = 'http://localhost:5453'
-const BASE_URL = 'https://blogging-app-backend-nodejs.herokuapp.com'
+const BASE_URL = 'http://localhost:5050'
+// const BASE_URL = 'https://blogging-app-backend-nodejs.herokuapp.com'
 
 const CLOUDINARY='https://api.cloudinary.com/v1_1/dwmm1r1ph/upload/blogApp'
 

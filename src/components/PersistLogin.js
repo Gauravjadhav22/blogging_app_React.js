@@ -2,7 +2,6 @@ import { Outlet } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useRefreshToken from '../hooks/useRefreshToken';
 import useAuth from '../hooks/useAuth';
-import jwtDecode from "jwt-decode"
 import { IsLoading } from "./IsLoading";
 const PersistLogin = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -16,8 +15,8 @@ const PersistLogin = () => {
 
         const verifyRefreshToken = async () => {
             try {
-                       await refresh();
-               
+                await refresh();
+
             }
             catch (err) {
                 console.error(err);
@@ -27,7 +26,7 @@ const PersistLogin = () => {
             }
         }
 
-      
+
 
 
         !auth?.accessToken && persist ? verifyRefreshToken() : setIsLoading(false);
@@ -47,7 +46,7 @@ const PersistLogin = () => {
             {!persist
                 ? <Outlet />
                 : isLoading
-                    ? <IsLoading/>
+                    ? <IsLoading />
                     : <Outlet />
             }
         </>

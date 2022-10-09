@@ -60,8 +60,26 @@ export const BlogsProvider = ({ children }) => {
 
 
 
+  const setLikedAndDisliked = async ({current:{liked,disliked}}, blogId) => {
+
+    try {
+      const response = await axiosPrivate.patch(`${BASE_URL_PERSONAL}/likes/${blogId}`, { liked,disliked});
+
+      console.log(response.data);
+
+
+
+    } catch (err) {
+      setFoundUser({})
+      console.error(err);
+    }
+
+  }
+
+
+
   return (
-    <BlogsContext.Provider value={{ blogs, setBlogs, getUserBlogs: getUserBlogs, getBlogs: getBlogs, userBlogs, setUserBlogs, setFoundUser, foundUser, findUser: findUser, foundUserName, setFoundUserName }}>
+    <BlogsContext.Provider value={{ blogs, setBlogs, getUserBlogs, getBlogs, userBlogs, setUserBlogs, setFoundUser, foundUser, findUser, foundUserName, setFoundUserName, setLikedAndDisliked }}>
       {children}
     </BlogsContext.Provider>
   )

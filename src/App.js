@@ -32,13 +32,16 @@ const App = () => {
 
 
   return (
-    <div > 
+    <div >
       <Header />
       <Routes>
         <Route path="/"  >
           {persist ? <Route element={<PersistLogin />}>
 
             {/* Protected Routes */}
+            <Route element={<RequireAuth />}>
+              <Route path="/" element={<Feed />} />
+            </Route>
             <Route element={<RequireAuth />}>
               <Route path="hashtag" element={<Hashtag />} />
             </Route>
@@ -49,25 +52,11 @@ const App = () => {
               <Route path="profile" element={<Profile />} />
             </Route>
 
-            <Route element={<RequireAuth />}>
-              <Route path="/" element={<Feed />} />
-            </Route>
 
-          </Route> : (<><Route path="/" element={<Feed />} />
+          </Route> : (<>
+          <Route path="/" element={<Feed />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} /></>)}
-
-
-
-
-
-
-
-
-
-
-
-
 
           {/* not Found */}
           <Route path="*" element={<NotFound />} />

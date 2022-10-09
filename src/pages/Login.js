@@ -89,7 +89,7 @@ const Login = () => {
             localStorage.setItem("persist", "true")
             window.location.href = '/'
 
-
+            // navigate(from, { replace: true });
             setIsLoading(false)
         } catch (err) {
             setIsLoading(false)

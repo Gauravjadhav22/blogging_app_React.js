@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { RiNotificationBadgeFill, RiNotificationBadgeLine, RiSearchLine } from "react-icons/ri"
+import { RiNotificationBadgeFill, RiNotificationBadgeLine } from "react-icons/ri"
 import { Link } from 'react-router-dom'
 import { VscSearch } from "react-icons/vsc"
 import { ImFeed, ImProfile } from "react-icons/im"

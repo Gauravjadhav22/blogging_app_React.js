@@ -52,7 +52,7 @@ const FindUser = () => {
                             foundUser?.blogs?.map(item => {
                                 return <>
 
-                                    <div key={item._id} style={{ boxShadow: "2px 2px 8px #fff " }} className={`${updatebox ? "hidden" : "visible"}px-2 flex flex-col items-stretch bg-white w-full h-full border-2 border-blue-500 text-center my-8 transition`} >
+                                    <div key={item._id} style={{ boxShadow: "2px 2px 8px #fff " }} className={`${updatebox ? "hidden" : "visible"} px-2 flex flex-col items-stretch w-full h-full border-2 border-blue-500 my-8  bg-gray-200 rounded-xl shadow-black shadow-xl max-w-xl text-center transition`} >
                                         <div className=' w-full bg-amber-100 flex justify-between items-center px-4'>
 
                                             <div className='font-bold text-lg '>@{item.username}</div>
