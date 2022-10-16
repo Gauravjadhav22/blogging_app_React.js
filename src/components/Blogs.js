@@ -175,7 +175,7 @@ const Blogs = () => {
                                                     setLikedAndDisliked(likeDislike, item._id)
                                                 }}
                                                 className='text-4xs mx-4 flex justify-center items-center'><h1 className="text-green-600 text-2xl font-bold">{item?.liked?.length}</h1>
-                                                {item?.liked?.find((itm) => itm === auth.user.userId) ? <div className="hover:animate-bounce transition delay-700 p-2 "> <AiFillLike className=' text-4xl' /></div> : <div className="hover:animate-bounce transition delay-700 p-2 "><AiOutlineLike className=' text-4xl' /></div>}
+                                                {item?.liked?.find((itm) => itm === auth?.user?.userId) ? <div className="hover:animate-bounce transition delay-700 p-2 "> <AiFillLike className=' text-4xl' /></div> : <div className="hover:animate-bounce transition delay-700 p-2 "><AiOutlineLike className=' text-4xl' /></div>}
                                             </div>
                                             <div
                                                 onClick={() => {
@@ -185,7 +185,7 @@ const Blogs = () => {
                                                 }}
 
                                                 className='text-4xs mx-4  flex justify-center items-center'><h1 className="text-red-600 text-2xl font-bold">{item?.disliked?.length}</h1>
-                                                {item?.disliked?.find((itm) => itm === auth.user.userId) ? (
+                                                {item?.disliked?.find((itm) => itm === auth?.user?.userId) ? (
                                                     <div className="hover:animate-bounce transition delay-700 p-2 "><AiTwotoneDislike className='text-4xl' /></div>) : (<div> <AiOutlineDislike className=' text-4xl' /></div>)}
                                             </div>
                                             <div className='text-xs mx-4 flex justify-center items-center'><h1 className="text-blue-600 font-bold text-2xl">{(() => {
