@@ -208,8 +208,8 @@ const Blogs = () => {
 
                                             </div>
                                             {auth?.accessToken &&
-                                                <div className='bg-blue-800 shadow-gray-700 mb-4 flex items-center shadow xl:w-96 lg:w-92 md:w-80 sm:w-72 justify-center px-2'>
-                                                    <input value={comment} onChange={(e) => setComment(e.target.value)} type='text' placeholder='wow! Amazing Stuff' className='xl:w-144 lg:w-128 md:w-96 sm:w-64 p-2 shadow-lg h-12 rounded-full text-center' /> <TbSend className='text-6xl text-white ml-2 rounded-full' onClick={() => addComment(item._id)} />
+                                                <div className='bg-blue-900 shadow-gray-700 mb-4 flex items-center shadow xl:w-96 lg:w-92 md:w-80 sm:w-72 justify-center px-2'>
+                                                    <input value={comment} onChange={(e) => setComment(e.target.value)} type='text' placeholder='wow! Amazing Stuff' className='xl:w-144 lg:w-128 md:w-96 sm:w-64 p-0 shadow-lg h-12 rounded-full text-center' onKeyDown={(e) => e.key==='Enter'&&addComment(item._id)} /> <TbSend style={{fontSize:"60px"}} className='text-6xl text-white ml-2 rounded-full'  onClick={() => addComment(item._id)} />
                                                 </div>
                                             }
                                         </div>

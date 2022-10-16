@@ -17,7 +17,6 @@ const useRefreshToken = () => {
 
             const dd = jwtDecode(response.data.accessToken)
             setAuth((prev) => ({ ...prev, accessToken: response.data.accessToken, user:dd.user }))
-            console.log(auth);
 
 
             return response.data.accessToken;
