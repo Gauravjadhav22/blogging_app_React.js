@@ -27,13 +27,13 @@ const Nav = () => {
             </Link>
 
             {auth?.user?.username && <div className='flex-1 sm:my-2 flex justify-center'>
-                <div className='shadow-blue-500 shadow flex justify-center items-center w-fit border-2 border-blue-400 bg-green-800 sm:my-4'>
+                <div className='shadow-blue-500 shadow flex justify-center items-center w-fit border-3 p-2 rounded-xl border-white bg-green-800 sm:my-4'>
                     <input value={foundUserName} onChange={(e) => setFoundUserName(e.target.value)} className='p-1 h-full' type='text' placeholder='Search Username' />
                     <Link to='/finduser'>   <VscSearch onClick={() => {
                         findUser()
                         setFoundUserName("")
 
-                    }} className='text-blue-400 p-1 shadow-red shadow text-4xl hover:text-white' /></Link>
+                    }} className='text-white p-1 shadow-red shadow text-4xl hover:text-amber-200' /></Link>
                 </div>
             </div>}
             {auth?.accessToken && <div className='flex-1 flex justify-center xl:flex-row lg:flex-row md:flex-col sm:flex-col'>

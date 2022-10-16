@@ -132,7 +132,7 @@ const Blogs = () => {
 
 
                 {
-                    blogs.length ?
+                    blogs?.length ?
 
                         blogs?.map(item => {
                             return <>
@@ -175,7 +175,7 @@ const Blogs = () => {
                                                     setLikedAndDisliked(likeDislike, item._id)
                                                 }}
                                                 className='text-4xs mx-4 flex justify-center items-center'><h1 className="text-green-600 text-2xl font-bold">{item?.liked?.length}</h1>
-                                                {item?.liked?.find((itm) => itm === auth?.user?.userId) ? <div className="hover:animate-bounce transition delay-700 p-2 "> <AiFillLike className=' text-4xl' /></div> : <div className="hover:animate-bounce transition delay-700 p-2 "><AiOutlineLike className=' text-4xl' /></div>}
+                                                {item?.liked?.find((itm) => itm === auth?.user?.userId) ? <div className=" hover:animate-pulse transition delay-700 p-2 "> <AiFillLike className=' text-4xl' /></div> : <div className=" hover:animate-pulse transition delay-700  p-2 "><AiOutlineLike className=' text-4xl' /></div>}
                                             </div>
                                             <div
                                                 onClick={() => {
@@ -186,7 +186,7 @@ const Blogs = () => {
 
                                                 className='text-4xs mx-4  flex justify-center items-center'><h1 className="text-red-600 text-2xl font-bold">{item?.disliked?.length}</h1>
                                                 {item?.disliked?.find((itm) => itm === auth?.user?.userId) ? (
-                                                    <div className="hover:animate-bounce transition delay-700 p-2 "><AiTwotoneDislike className='text-4xl' /></div>) : (<div> <AiOutlineDislike className=' text-4xl' /></div>)}
+                                                    <div className="hover:animate-pulse transition delay-700 p-2 "><AiTwotoneDislike className='text-4xl' /></div>) : (<div className="hover:animate-pulse transition delay-700 p-2"> <AiOutlineDislike className=' text-4xl' /></div>)}
                                             </div>
                                             <div className='text-xs mx-4 flex justify-center items-center'><h1 className="text-blue-600 font-bold text-2xl">{(() => {
 
@@ -208,8 +208,8 @@ const Blogs = () => {
 
                                             </div>
                                             {auth?.accessToken &&
-                                                <div className='bg-blue-800 pl-2 shadow-gray-700 mb-4 flex items-center shadow xl:w-96 lg:w-92 md:w-80 sm:w-72 justify-center px-2'>
-                                                    <input value={comment} onChange={(e) => setComment(e.target.value)} type='text' placeholder='wow! Amazing Stuff' className='xl:w-144 lg:w-128 md:w-96 sm:w-64 p-2 shadow-lg h-12 rounded-full text-center' /> <TbSend className='text-6xl text-amber-300 ml-2 rounded-full' onClick={() => addComment(item._id)} />
+                                                <div className='bg-blue-800 shadow-gray-700 mb-4 flex items-center shadow xl:w-96 lg:w-92 md:w-80 sm:w-72 justify-center px-2'>
+                                                    <input value={comment} onChange={(e) => setComment(e.target.value)} type='text' placeholder='wow! Amazing Stuff' className='xl:w-144 lg:w-128 md:w-96 sm:w-64 p-2 shadow-lg h-12 rounded-full text-center' /> <TbSend className='text-6xl text-white ml-2 rounded-full' onClick={() => addComment(item._id)} />
                                                 </div>
                                             }
                                         </div>

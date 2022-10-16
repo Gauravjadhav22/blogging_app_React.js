@@ -12,12 +12,10 @@ const useRefreshToken = () => {
                 withCredentials: true
             });
 
-            console.log(response.data);
 
 
 
             const dd = jwtDecode(response.data.accessToken)
-console.log(dd);
             setAuth((prev) => ({ ...prev, accessToken: response.data.accessToken, user:dd.user }))
             console.log(auth);
 

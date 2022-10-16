@@ -65,7 +65,17 @@ export const BlogsProvider = ({ children }) => {
     try {
       const response = await axiosPrivate.patch(`${BASE_URL_PERSONAL}/like-dislike/${blogId}`, { like: liked, dislike: disliked });
 
-      getBlogs()
+      // getBlogs()
+
+      setBlogs(blogs.map((itm) => {
+        if (itm._id === response.data.response._id) {
+          itm.liked = response.data.response.liked
+          itm.disliked = response.data.response.disliked
+          return itm
+        }
+        return itm;
+      }))
+
 
 
 
