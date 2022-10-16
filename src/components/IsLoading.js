@@ -1,10 +1,10 @@
 import React from 'react'
 
-export const IsLoading = () => {
+  const IsLoading = () => {
 let circleCommonClasses = 'h-4 w-4 ml-1 bg-current rounded-full';
 
     return (
-        <div className='flex justify-center mt-64 mb-2'>
+        <div className='flex justify-center mt-24 mb-2'>
             <div className='flex items-center content-center  '>
                 <h1 className='text-2xl mr-1'>Loading</h1>
                 <div className={`${circleCommonClasses} mr-1 animate-bounce`}></div>
@@ -16,3 +16,5 @@ let circleCommonClasses = 'h-4 w-4 ml-1 bg-current rounded-full';
         </div>
     )
 }
+
+export default IsLoading

@@ -60,12 +60,12 @@ export const BlogsProvider = ({ children }) => {
 
 
 
-  const setLikedAndDisliked = async ({current:{liked,disliked}}, blogId) => {
+  const setLikedAndDisliked = async ({ current: { liked, disliked } }, blogId) => {
 
     try {
-      const response = await axiosPrivate.patch(`${BASE_URL_PERSONAL}/likes/${blogId}`, { liked,disliked});
+      const response = await axiosPrivate.patch(`${BASE_URL_PERSONAL}/like-dislike/${blogId}`, { like: liked, dislike: disliked });
 
-      console.log(response.data);
+      getBlogs()
 
 
 

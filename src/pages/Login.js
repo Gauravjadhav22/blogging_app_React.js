@@ -5,7 +5,7 @@ import useAuth from "../hooks/useAuth";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
 import axios from "../api/axios";
-import { IsLoading } from '../components/IsLoading';
+import  IsLoading from '../components/IsLoading';
 const LOGIN_URL = "/auth";
 const intro = () => {
     return (

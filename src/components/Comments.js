@@ -79,6 +79,7 @@ const Comments = ({ id, update, setUpdate, setCmtCount, cmtCount }) => {
 
 
         } catch (err) {
+            console.log(err);
         }
     }
 

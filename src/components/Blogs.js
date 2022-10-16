@@ -8,6 +8,7 @@ import useAuth from "../hooks/useAuth"
 import useAxiosPrivate from "../hooks/useAxiosPrivate"
 import Comments from "./Comments"
 import BlogsContext from "../context/BlogsProvider"
+import IsLoading from "../components/IsLoading"
 const BASE_URL_PERSONAL = '/api/personalblogs'
 const BASE_URL_COMMENT = '/api/comment'
 
@@ -19,7 +20,7 @@ const Blogs = () => {
 
     const { auth } = useAuth()
 
-   const likeDislike = useRef({
+    const likeDislike = useRef({
         liked: false,
         disliked: false
     })
@@ -131,79 +132,91 @@ const Blogs = () => {
 
 
                 {
-                    blogs?.map(item => {
-                        return <>
-                            <div key={item._id} className={` ${updatebox ? "hidden" : "visible"} p-2 flex flex-col items-stretch w-full h-full text-center my-8 bg-gray-100 transition rounded-xl shadow-black shadow-xl `} >
-                                <div className=' w-full bg-amber-100 flex justify-around items-center flex-wrap px-2'>
-                                    {item.user === auth?.user?.userId &&
-                                        <div className="m-3 w-fit text-left text-white rounded-xl flex justify-start items-center">
-                                            <BiPencil onClick={() => {
-                                                setUpdateId(item._id)
-                                                setUpdatebox(true)
-                                            }} className="text-2xl cursor-pointer text-black mr-5" />
-                                            <RiDeleteBin6Line onClick={() => deleteBlog(item._id)} className="text-2xl cursor-pointer text-white bg-black" />
-                                        </div>}
-                                    <div className='font-bold text-lg break-words flex-1'>@{item.username}</div>
-                                    <div className='font-bold text-sm ml-8'>{item.createdAt}</div>
+                    blogs.length ?
 
-                                </div>
-
-
-                                <div className='p-4 flex flex-col justify-center text-left w-full bg-slate-300-100 '>
-
-
-                                    <br />
-                                    <div className='text-lg text-left break-words border-2 border-gray-200 p-2'>{item.content}</div>
-
-
-                                    <div className='flex flex-wrap justify-center items-center p-4'>
-                                        {item?.pictures?.map(item => {
-                                            return <img src={item} className=' hover:scale-125  transition w-52 h-52 m-1' />
-                                        })}
+                        blogs?.map(item => {
+                            return <>
+                                <div key={item._id} className={` ${updatebox ? "hidden" : "visible"} p-2 flex flex-col items-stretch w-full h-full text-center my-8 bg-gray-100 transition rounded-xl shadow-black shadow-xl `} >
+                                    <div className=' w-full bg-amber-100 flex justify-around items-center flex-wrap px-2'>
+                                        {item.user === auth?.user?.userId &&
+                                            <div className="m-3 w-fit text-left text-white rounded-xl flex justify-start items-center">
+                                                <BiPencil onClick={() => {
+                                                    setUpdateId(item._id)
+                                                    setUpdatebox(true)
+                                                }} className="text-2xl cursor-pointer text-black mr-5" />
+                                                <RiDeleteBin6Line onClick={() => deleteBlog(item._id)} className="text-2xl cursor-pointer text-white bg-black" />
+                                            </div>}
+                                        <div className='font-bold text-lg break-words flex-1'>@{item.username}</div>
+                                        <div className='font-bold text-sm ml-8'>{item.createdAt}</div>
 
                                     </div>
-                                    <br />
-                                </div>
-                                <div className="flex justify-center items-center">
-                                    <div className='flex text-left justify-between mb-4'>
-                                        <div onClick={() => {
-                                            likeDislike.current={ liked: true, disliked: false }
-                                            setLikedAndDisliked(likeDislike, item._id)
-                                        }} className='text-4xs mx-4 flex justify-center items-center'>3k {likeDislike.current.liked ? <AiFillLike className='cursor-pointer text-4xl' /> : <AiOutlineLike className='cursor-pointer text-4xl' />}</div>
-                                        <div onClick={() => {
-                                             likeDislike.current={ liked: false, disliked: true }
-
-                                            setLikedAndDisliked(likeDislike, item._id)
-                                        }} className='text-4xs mx-4  flex justify-center items-center'>2k {likeDislike.current.disliked ? <AiTwotoneDislike className='cursor-pointer text-4xl' /> : <AiOutlineDislike className='cursor-pointer text-4xl' />}</div>
-                                        <div className='text-xs mx-4 flex justify-center items-center'><h1 className="text-blue-600 font-bold text-2xl">{(() => {
-
-                                            var obj = cmtCount.find((i) => i[item._id])
-                                            return obj && Object.values(obj)[0]
-
-                                        })()}</h1><BiCommentDetail className='cursor-pointer text-4xl' /></div>
-                                    </div>
-                                </div>
-                                <div className="flex justify-center">
-                                    <div className='px-32 p-4 pb-0 xl:w-128 lg:w-128 md:w-96 sm:w-72 h-96 flex flex-col justify-end items-center '>
-                                        <div className='overflow-y-scroll scrollbar-hide mb-1 xl:w-128 lg:w-128 md:w-96 sm:w-80   '>
 
 
+                                    <div className='p-4 flex flex-col justify-center text-left w-full bg-slate-300-100 '>
 
-                                            <Comments cmtCount={cmtCount} setCmtCount={setCmtCount} update={updateCmt} cmt={comment} setUpdate={setUpdateCmt} key={item._id} id={item._id} />
+
+                                        <br />
+                                        <div className='text-lg text-left break-words border-2 border-gray-200 p-2'>{item.content}</div>
 
 
+                                        <div className='flex flex-wrap justify-center items-center p-4'>
+                                            {item?.pictures?.map(item => {
+                                                return <img key={item._id + Math.random(Math.floor(9) * 100)} src={item} className=' hover:scale-125  transition w-52 h-52 m-1' />
+                                            })}
 
                                         </div>
-                                        {auth?.accessToken &&
-                                            <div className='bg-blue-800 pl-2 shadow-gray-700 mb-4 flex items-center shadow xl:w-96 lg:w-92 md:w-80 sm:w-72 justify-center px-2'>
-                                                <input value={comment} onChange={(e) => setComment(e.target.value)} type='text' placeholder='wow! Amazing Stuff' className='xl:w-144 lg:w-128 md:w-96 sm:w-64 p-2 shadow-lg h-12 rounded-full text-center' /> <TbSend className='text-6xl text-amber-300 ml-2 rounded-full' onClick={() => addComment(item._id)} />
+                                        <br />
+                                    </div>
+                                    <div className="flex justify-center items-center">
+                                        <div className='flex text-left justify-between mb-4'>
+                                            <div
+                                                onClick={() => {
+                                                    likeDislike.current = { liked: true, disliked: false }
+                                                    setLikedAndDisliked(likeDislike, item._id)
+                                                }}
+                                                className='text-4xs mx-4 flex justify-center items-center'><h1 className="text-green-600 text-2xl font-bold">{item?.liked?.length}</h1>
+                                                {item?.liked?.find((itm) => itm === auth.user.userId) ? <div className="hover:animate-bounce transition delay-700 p-2 "> <AiFillLike className=' text-4xl' /></div> : <div className="hover:animate-bounce transition delay-700 p-2 "><AiOutlineLike className=' text-4xl' /></div>}
                                             </div>
-                                        }
+                                            <div
+                                                onClick={() => {
+                                                    likeDislike.current = { liked: false, disliked: true }
+
+                                                    setLikedAndDisliked(likeDislike, item._id)
+                                                }}
+
+                                                className='text-4xs mx-4  flex justify-center items-center'><h1 className="text-red-600 text-2xl font-bold">{item?.disliked?.length}</h1>
+                                                {item?.disliked?.find((itm) => itm === auth.user.userId) ? (
+                                                    <div className="hover:animate-bounce transition delay-700 p-2 "><AiTwotoneDislike className='text-4xl' /></div>) : (<div> <AiOutlineDislike className=' text-4xl' /></div>)}
+                                            </div>
+                                            <div className='text-xs mx-4 flex justify-center items-center'><h1 className="text-blue-600 font-bold text-2xl">{(() => {
+
+                                                var obj = cmtCount.find((i) => i[item._id])
+                                                return obj && Object.values(obj)[0]
+
+                                            })()}</h1><BiCommentDetail className='text-4xl' /></div>
+                                        </div>
+                                    </div>
+                                    <div className="flex justify-center">
+                                        <div className='px-32 p-4 pb-0 xl:w-128 lg:w-128 md:w-96 sm:w-72 h-96 flex flex-col justify-end items-center '>
+                                            <div className='overflow-y-scroll scrollbar-hide mb-1 xl:w-128 lg:w-128 md:w-96 sm:w-80   '>
+
+
+
+                                                <Comments cmtCount={cmtCount} setCmtCount={setCmtCount} update={updateCmt} cmt={comment} setUpdate={setUpdateCmt} key={item._id} id={item._id} />
+
+
+
+                                            </div>
+                                            {auth?.accessToken &&
+                                                <div className='bg-blue-800 pl-2 shadow-gray-700 mb-4 flex items-center shadow xl:w-96 lg:w-92 md:w-80 sm:w-72 justify-center px-2'>
+                                                    <input value={comment} onChange={(e) => setComment(e.target.value)} type='text' placeholder='wow! Amazing Stuff' className='xl:w-144 lg:w-128 md:w-96 sm:w-64 p-2 shadow-lg h-12 rounded-full text-center' /> <TbSend className='text-6xl text-amber-300 ml-2 rounded-full' onClick={() => addComment(item._id)} />
+                                                </div>
+                                            }
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </>
-                    })
+                            </>
+                        }) : (<div className="bg-white h-fit"><IsLoading /></div>)
                 }
 
 

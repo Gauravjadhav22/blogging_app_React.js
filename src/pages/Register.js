@@ -4,7 +4,7 @@ import { ImCross } from "react-icons/im"
 import { FcInfo } from "react-icons/fc"
 import axios from '../api/axios'
 import { Link } from "react-router-dom"
-import { IsLoading } from '../components/IsLoading'
+import IsLoading  from '../components/IsLoading'
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const Passwd_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const GMAIL_REGEX = /^[a-z0-9](\.?[a-z0-9]){5,}@g(oogle)?mail\.com$/;
