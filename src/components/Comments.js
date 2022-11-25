@@ -8,6 +8,7 @@ const BASE_URL_COMMENT = '/api/comment'
 const Comments = ({ id, update, setUpdate, setCmtCount, cmtCount }) => {
 
 
+
     const { auth } = useAuth()
     const axiosPrivate = useAxiosPrivate()
     const [comments, setComments] = useState([])
@@ -94,8 +95,11 @@ const Comments = ({ id, update, setUpdate, setCmtCount, cmtCount }) => {
 
                 comments?.map(item => {
                     return (
-                        <div key={item._id} className='transition p-3 bg-slate-200 break-words m-5 rounded-lg shadow-green-300 shadow-md ' >
+                        <div key={item._id} className='overflow-hidden hover:animate-pulse transition pt-4 p-2 text-xl bg-gray-200 break-words m-5 rounded-lg shadow-slate-400 shadow-md h-fit ' >
+
                             {item.content}
+                     
+
                             <br />
                             <div className='flex justify-end items-center font-bold text-red-800 mt-2 w-fit'>
                                 {
@@ -108,9 +112,10 @@ const Comments = ({ id, update, setUpdate, setCmtCount, cmtCount }) => {
                                 {
                                 }
 
-                                <div>
+                                <div className='flex justify-between flex-wrap'>
 
-                                    <span className='ml-6 xl:ml-14 text-black text-xs text-right'>{item.createdAt}</span>
+                                    <span className='ml-6 xl:ml-14 text-xs text-right text-amber-500'>{item.createdAt}</span>
+                                    <span className='ml-6 xl:ml-14  text-xs text-right text-blue-500'>userId :{item.userId}</span>
                                 </div>
                             </div>
                         </div>
@@ -124,7 +129,7 @@ const Comments = ({ id, update, setUpdate, setCmtCount, cmtCount }) => {
 
                 update?.map(item => {
                     return (
-                        id === item.id && <div key={item._id} className='transition p-3 bg-slate-200 break-words m-5 rounded-lg  shadow-green-300 shadow-lg '>
+                        id === item.id && <div key={item._id} className='transition p-3 bg-slate-200 break-words m-5 rounded-lg text-xl shadow-green-300 shadow-lg '>
                             {item?.cmt?.content}
                             <br />
                             <div className='flex justify-end items-center font-bold text-red-800 mt-2 w-fit'>
@@ -141,6 +146,7 @@ const Comments = ({ id, update, setUpdate, setCmtCount, cmtCount }) => {
                                 <div>
 
                                     <span className='ml-6 xl:ml-14 text-black text-xs text-right'>{item?.cmt?.createdAt}</span>
+                                    <span className='ml-6 xl:ml-14 text-black text-xs text-right'>userId{item?.cmt?.userId}</span>
                                 </div>
                             </div>
                         </div>

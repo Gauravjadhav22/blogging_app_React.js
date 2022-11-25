@@ -23,7 +23,7 @@ const BASE_URL_user = '/api/user'
 // }
 const Profile = () => {
 
-  const { auth,setAuth } = useAuth()
+  const { auth, setAuth } = useAuth()
   const { getUserBlogs, userBlogs, setUserBlogs } = useContext(BlogsContext)
   const [like, setLike] = useState(false)
   const [updatebox, setUpdatebox] = useState(false)
@@ -56,8 +56,8 @@ const Profile = () => {
 
   const updateProfile = async (img) => {
     try {
-      const ress =await axiosPrivate.patch(`${BASE_URL_user}/${auth.user.userId}`, { picture:img })
-      setAuth(prev=>({...prev,img:ress.data.user.picture}))
+      const ress = await axiosPrivate.patch(`${BASE_URL_user}/${auth.user.userId}`, { picture: img })
+      setAuth(prev => ({ ...prev, img: ress.data.user.picture }))
       getUserBlogs(auth.user.userId)
 
 
@@ -131,7 +131,7 @@ const Profile = () => {
           {isloading && <h1 className='text-4xl text-red-600'>Loading....</h1>}
           <input onChange={(e) => uploadImage(e.target.files)} className='opacity-0' type="file" name="photo" id="upload-photo" />
           {!userBlogs?.picture ? (
-            <FaUserAstronaut className='text-6xl text-white ml-28' />
+            <img src='https://res.cloudinary.com/dwmm1r1ph/image/upload/v1669314631/blogApp/oixf4ghlv1xjaji40gjr.png' className='text-6xl text-white ml-28' />
 
           ) : (
             <div className={`${isloading ? "cursor-not-allowed opacity-30" : "cursor-auto opacity-100"} flex justify-center items-center`}>
@@ -162,7 +162,7 @@ const Profile = () => {
                   </div>
                 }
               </div>
-              <div key={item._id}  className={`${updatebox ? "hidden" : "visible"} p-2 bg-gray-200 rounded-xl shadow-black shadow-xl  px-2 flex flex-col items-stretch max-w-xl text-center  my-8 transition`} >
+              <div key={item._id} className={`${updatebox ? "hidden" : "visible"} p-2 bg-gray-200 rounded-xl shadow-black shadow-xl  px-2 flex flex-col items-stretch max-w-xl text-center  my-8 transition`} >
                 <div className=' w-full bg-amber-100 flex justify-between items-center px-4'>
                   {item.user === auth.user.userId &&
                     <div style={{ marginLeft: "-22px" }} className="m-3 w-fit text-left text-white rounded-xl flex justify-start items-center">

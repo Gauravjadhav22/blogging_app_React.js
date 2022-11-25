@@ -4,7 +4,7 @@ import { ImCross } from "react-icons/im"
 import { FcInfo } from "react-icons/fc"
 import axios from '../api/axios'
 import { Link } from "react-router-dom"
-import IsLoading  from '../components/IsLoading'
+import IsLoading from '../components/IsLoading'
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const Passwd_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const GMAIL_REGEX = /^[a-z0-9](\.?[a-z0-9]){5,}@g(oogle)?mail\.com$/;
@@ -174,8 +174,8 @@ const Register = () => {
                             {intro()}
                         </div>
                         <br />
-                        <div style={{ boxShadow: "1px 1px 12px " }} className="border-4 border-blue-100 w-128 mb-16">
-                            <h1 className='text-xl font-bold mb-4 text-center'>
+                        <div style={{ boxShadow: "1px 1px 12px " }} className="rounded-md p-4 border-4 border-blue-100 w-128 mb-16">
+                            <h1 className='text-white text-xl font-bold mb-4 text-center'>
                                 Creating New Account
                             </h1>
                             <form className='flex flex-col items-center justify-center' onSubmit={handleSubmit}>
@@ -204,7 +204,7 @@ const Register = () => {
                                 </div>
                                 <p
                                     className={`flex text-xs ${userFocus && userName && !validName ? "visible" : "invisible"
-                                        }`}
+                                        } text-white`}
                                 >
                                     <FcInfo />
                                     &nbsp;
@@ -240,7 +240,7 @@ const Register = () => {
                                 </div>
                                 <p
                                     style={{ marginTop: "-25px" }}
-                                    className={` ${gmailFocus && !validGmail ? "visible" : "invisible"}`}
+                                    className={` ${gmailFocus && !validGmail ? "visible" : "invisible"} text-white`}
                                 >
 
                                     <span className='flex items-center text-xl '> <FcInfo /> &nbsp; Enter a valid Gmail</span>
@@ -279,7 +279,7 @@ const Register = () => {
                                 </div>
                                 <p
                                     style={{ marginTop: "-20px" }}
-                                    className={`flex justify-center items-center text-xl ${!validPasswd && PasswdFocus ? "visible" : "invisible"}`}
+                                    className={`flex justify-center items-center text-xl ${!validPasswd && PasswdFocus ? "visible" : "invisible"} text-white`}
                                 >
                                     <FcInfo style={{ marginTop: "-50px", width: "125px" }} className="text-3xl" />
                                     8 to 24 characters.
@@ -310,7 +310,7 @@ const Register = () => {
                                     />
                                 </div>
                                 <p
-                                    className={`flex items-center mb-2 ${matchFocus && !validMatch ? "visible" : "invisible"}`}
+                                    className={`flex items-center mb-2 ${matchFocus && !validMatch ? "visible" : "invisible"} text-white`}
                                 >
                                     <FcInfo />
                                     <span>  &nbsp; Must match the first password input field.
@@ -330,7 +330,7 @@ const Register = () => {
 
 
                             </form>
-                            <div className='mt-5 mb-4 text-xl'>
+                            <div className='mt-5 mb-4 text-xl text-white'>
                                 Having An Account &nbsp;
 
                                 < Link to="/login">  <button className='bg-blue-500 text-white p-2 hover:bg-blue-700 '>Sign In</button></Link>

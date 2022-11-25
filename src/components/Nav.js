@@ -27,8 +27,8 @@ const Nav = () => {
             </Link>
 
             {auth?.user?.username && <div className='flex-1 sm:my-2 flex justify-center'>
-                <div className='shadow-blue-500 shadow flex justify-center items-center w-fit border-3 p-2 rounded-xl border-white bg-green-800 sm:my-4'>
-                    <input value={foundUserName} onChange={(e) => setFoundUserName(e.target.value)} className='p-1 h-full' type='text' placeholder='Search Username' />
+                <div className='shadow-blue-500 shadow flex justify-center items-center w-fit border-3 p-1.5 rounded-xl border-white bg-cyan-700 sm:my-4'>
+                    <input value={foundUserName} onChange={(e) => setFoundUserName(e.target.value)} className='p-1 h-full rounded ' type='text' placeholder='Search Username' />
                     <Link to='/finduser'>   <VscSearch onClick={() => {
                         findUser()
                         setFoundUserName("")
@@ -54,14 +54,14 @@ const Nav = () => {
                 !auth?.accessToken && !persist &&
                 <div className='flex-0 flex mt-4 items-stretch justify-center'>
                     <Link to='/login'>
-                        <button className='bg-blue-600 p-2 mr-4 rounded-lg text-white hover:bg-blue-400'>
+                        <button className='bg-green-600 p-2 mr-4 rounded-lg text-white hover:bg-green-400'>
 
                             Sign In
                         </button>
                     </Link>
                     <Link to='/' className=''>
-                        <button className='text-white bg-blue-600 p-2 mr-4 rounded-lg hover:bg-blue-400'>
-                            Home
+                        <button className='text-white bg-amber-600 p-2 mr-4 rounded-lg hover:bg-amber-400'>
+                            Feed
                         </button>
                         <FaHome className='p-2 mr-4 rounded-lg text-black hover:bg-blue-200' />
                     </Link>

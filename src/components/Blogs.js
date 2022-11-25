@@ -156,10 +156,10 @@ const Blogs = () => {
 
 
                                         <br />
-                                        <div className='text-lg text-left break-words border-2 border-gray-200 p-2'>{item.content}</div>
+                                        <div className='text-left text-xl mb-4 font-bold break-words border-2 border-gray-200 p-2 border-none'>" {item.content} "</div>
 
 
-                                        <div className='flex flex-wrap justify-center items-center p-4'>
+                                        <div className='flex flex-wrap justify-center items-center p-4 border-none' >
                                             {item?.pictures?.map(item => {
                                                 return <img key={item._id + Math.random(Math.floor(9) * 100)} src={item} className=' hover:scale-125  transition w-52 h-52 m-1' />
                                             })}
@@ -200,7 +200,7 @@ const Blogs = () => {
                                         <div className='px-32 p-4 pb-0 xl:w-128 lg:w-128 md:w-96 sm:w-72 h-96 flex flex-col justify-end items-center '>
                                             <div className='overflow-y-scroll scrollbar-hide mb-1 xl:w-128 lg:w-128 md:w-96 sm:w-80   '>
 
-
+          
 
                                                 <Comments cmtCount={cmtCount} setCmtCount={setCmtCount} update={updateCmt} cmt={comment} setUpdate={setUpdateCmt} key={item._id} id={item._id} />
 
@@ -209,7 +209,7 @@ const Blogs = () => {
                                             </div>
                                             {auth?.accessToken &&
                                                 <div className='bg-blue-900 shadow-gray-700 mb-4 flex items-center shadow xl:w-96 lg:w-92 md:w-80 sm:w-72 justify-center px-2'>
-                                                    <input value={comment} onChange={(e) => setComment(e.target.value)} type='text' placeholder='wow! Amazing Stuff' className='xl:w-144 lg:w-128 md:w-96 sm:w-64 p-0 shadow-lg h-12 rounded-full text-center' onKeyDown={(e) => e.key==='Enter'&&addComment(item._id)} /> <TbSend style={{fontSize:"60px"}} className='text-6xl text-white ml-2 rounded-full'  onClick={() => addComment(item._id)} />
+                                                    <input value={comment} onChange={(e) => setComment(e.target.value)} type='text' placeholder='wow! Amazing Stuff' className='xl:w-144 lg:w-128 md:w-96 sm:w-64 p-0 shadow-lg h-12 rounded-full text-center' onKeyDown={(e) => e.key === 'Enter' && addComment(item._id)} /> <TbSend style={{ fontSize: "60px" }} className='text-6xl text-white ml-2 rounded-full' onClick={() => addComment(item._id)} />
                                                 </div>
                                             }
                                         </div>
