@@ -4,9 +4,11 @@ import useAuth from '../hooks/useAuth'
 
 import BlogsContext from '../context/BlogsProvider'
 import { NavLink } from 'react-router-dom'
+import Comments from '../components/Comments'
 
 
-const FindUser = () => {
+const FindUser = ({query}) => {
+    console.log(query);
 
     const { auth } = useAuth()
     const { userBlogs, foundUser, findUser } = useContext(BlogsContext)
@@ -62,7 +64,7 @@ const FindUser = () => {
                                         <div key={item._id} style={{ boxShadow: "2px 2px 8px #fff " }} className={`${updatebox ? "hidden" : "visible"} px-2 flex flex-col items-stretch w-full h-full border-2 border-blue-500 my-8  bg-gray-200 rounded-xl shadow-black shadow-xl max-w-xl text-center transition`} >
                                             <div className=' w-full bg-amber-100 flex justify-between items-center px-4'>
 
-                                                <div className='font-bold text-lg '>@{item.username}</div>
+                                                <div className='font-bold text-lg '>@{item.user.username}</div>
                                                 <div className='font-bold text-sm ml-8'>{item.createdAt}</div>
 
                                             </div>
@@ -83,9 +85,21 @@ const FindUser = () => {
                                                 </div>
                                                 <br />
                                             </div>
-                                            <div className="flex justify-center items-center">
+                                            <div className="flex justify-center">
+                                        <div className='px-32 p-4 pb-0 xl:w-128 lg:w-128 md:w-96 sm:w-72 h-96 flex flex-col justify-end items-center '>
+                                            <div className='overflow-y-scroll scrollbar-hide mb-1 xl:w-128 lg:w-128 md:w-96 sm:w-80   '>
+
+
+
+                                            <Comments  key={item._id} id={item._id} />
+
+
 
                                             </div>
+                                          
+                                        </div>
+                                    </div>
+                                          \
 
                                         </div>
                                     </>

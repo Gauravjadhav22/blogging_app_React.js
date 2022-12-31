@@ -9,6 +9,7 @@ import useAxiosPrivate from "../hooks/useAxiosPrivate"
 import Comments from "./Comments"
 import BlogsContext from "../context/BlogsProvider"
 import IsLoading from "../components/IsLoading"
+import { NavLink } from "react-router-dom"
 const BASE_URL_PERSONAL = '/api/personalblogs'
 const BASE_URL_COMMENT = '/api/comment'
 
@@ -16,8 +17,7 @@ const BASE_URL_COMMENT = '/api/comment'
 const Blogs = () => {
 
     const axiosPrivate = useAxiosPrivate()
-    const { setBlogs, blogs, getBlogs, getCommentsCount, setLikedAndDisliked } = useContext(BlogsContext)
-
+    const { setFoundUserName,setBlogs, blogs, getBlogs, getCommentsCount, setLikedAndDisliked } = useContext(BlogsContext)
     const { auth } = useAuth()
 
     const likeDislike = useRef({
@@ -146,7 +146,7 @@ const Blogs = () => {
                                                 }} className="text-2xl cursor-pointer text-black mr-5" />
                                                 <RiDeleteBin6Line onClick={() => deleteBlog(item._id)} className="text-2xl cursor-pointer text-white bg-black" />
                                             </div>}
-                                        <div className='font-bold text-lg break-words flex-1'>@{item.username}</div>
+                                        <NavLink to="/finduser" exact className='font-bold text-lg break-words flex-1 hover:underline cursor-pointer' onClick={() => setFoundUserName(item.user.username)}>@{item.user.username}</NavLink>
                                         <div className='font-bold text-sm ml-8'>{item.createdAt}</div>
 
                                     </div>
@@ -200,7 +200,7 @@ const Blogs = () => {
                                         <div className='px-32 p-4 pb-0 xl:w-128 lg:w-128 md:w-96 sm:w-72 h-96 flex flex-col justify-end items-center '>
                                             <div className='overflow-y-scroll scrollbar-hide mb-1 xl:w-128 lg:w-128 md:w-96 sm:w-80   '>
 
-          
+
 
                                                 <Comments cmtCount={cmtCount} setCmtCount={setCmtCount} update={updateCmt} cmt={comment} setUpdate={setUpdateCmt} key={item._id} id={item._id} />
 
