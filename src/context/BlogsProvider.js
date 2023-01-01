@@ -25,7 +25,7 @@ export const BlogsProvider = ({ children }) => {
     try {
       const response = await axios.get(BASE_URL_blogs);
       setBlogs(response.data)
-
+      console.log(response.data);
 
     } catch (err) {
       console.error(err);
