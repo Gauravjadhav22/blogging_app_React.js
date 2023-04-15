@@ -159,7 +159,7 @@ const Register = () => {
                 </section>
             ) : isLoading ? <IsLoading /> : (
                 <>
-                    <div className='flex justify-center items-center mb-7 text-4xl text-red-500'>
+                    <div className='flex justify-center items-center  mb-7 text-4xl text-red-500'>
 
                         <p
                             ref={errRef}
@@ -169,12 +169,12 @@ const Register = () => {
                             {errMsg}
                         </p>
                     </div>
-                    <section className="h-fit flex justify-center sm:flex-col  items-center lg:flex-row md:flex-col xl:flex-row ">
+                    <section className="h-fit flex justify-center sm:flex-col items-center lg:flex-row md:flex-col xl:flex-row ">
                         <div className="bg-blue-50 px-20 md:w-8/12 lg:w-6/12 mb-12 md:mb-0">
                             {intro()}
                         </div>
                         <br />
-                        <div style={{ boxShadow: "1px 1px 12px " }} className="rounded-md p-4 border-4 border-blue-100 w-128 mb-16">
+                        <div style={{ boxShadow: "1px 1px 12px " }} className="rounded-md w-128 mb-16">
                             <h1 className='text-white text-xl font-bold mb-4 text-center'>
                                 Creating New Account
                             </h1>
@@ -187,7 +187,7 @@ const Register = () => {
                                         ref={userNameRef}
                                         value={userName}
                                         onChange={(e) => setUserName(e.target.value)}
-                                        className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                                        className="form-control block w-96 px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                         placeholder="Username"
                                         onFocus={() => setUserNameFocus(true)}
                                         onBlur={() => setUserNameFocus(false)}
@@ -319,7 +319,11 @@ const Register = () => {
                                 {/* Submit button */}
                                 <button
                                     type="submit"
-                                    className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
+                                    className=" inline-block px-7 py-3 bg-blue-600 text-white
+                                     font-medium text-sm leading-snug uppercase 
+                                     rounded shadow-md hover:bg-blue-700 hover:shadow-lg
+                                      focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
+                                       active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-96"
                                     data-mdb-ripple="true"
                                     data-mdb-ripple-color="light"
                                 >
@@ -330,7 +334,7 @@ const Register = () => {
 
 
                             </form>
-                            <div className='mt-5 mb-4 text-xl text-white'>
+                            <div className='mt-5 mb-4 text-xl text-white text-center'>
                                 Having An Account &nbsp;
 
                                 < Link to="/login">  <button className='bg-blue-500 text-white p-2 hover:bg-blue-700 '>Sign In</button></Link>

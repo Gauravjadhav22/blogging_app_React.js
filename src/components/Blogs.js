@@ -17,7 +17,7 @@ const BASE_URL_COMMENT = '/api/comment'
 const Blogs = () => {
 
     const axiosPrivate = useAxiosPrivate()
-    const { setFoundUserName,setBlogs, blogs, getBlogs, getCommentsCount, setLikedAndDisliked } = useContext(BlogsContext)
+    const { setFoundUserName, setBlogs, blogs, getBlogs, getCommentsCount, setLikedAndDisliked } = useContext(BlogsContext)
     const { auth } = useAuth()
 
     const likeDislike = useRef({
@@ -216,7 +216,7 @@ const Blogs = () => {
                                     </div>
                                 </div>
                             </>
-                        }) : (<div className="bg-white h-fit"><IsLoading /></div>)
+                        }) : (<div className=" h-fit"><IsLoading /></div>)
                 }
 
 

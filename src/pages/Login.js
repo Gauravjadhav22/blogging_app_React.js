@@ -126,7 +126,7 @@ const Login = () => {
                                 <br />
                                 <div className="md:w-8/12 lg:w-5/12 lg:ml-20 bg-slate-50 p-7">
                                     <h1 className='text-xl font-bold mb-4 text-center'>
-                                        Signing In
+                                        Sign In
                                     </h1>
                                     <form onSubmit={handleSubmit}>
                                         <div className="mb-6">
