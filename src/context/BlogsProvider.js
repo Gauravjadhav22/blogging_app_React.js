@@ -15,7 +15,7 @@ export const BlogsContext = createContext({})
 export const BlogsProvider = ({ children }) => {
   const axiosPrivate = useAxiosPrivate()
   const { auth } = useAuth()
-  const [blogs, setBlogs] = useState([])
+  const [blogs, setBlogs] = useState(null)
   const [userBlogs, setUserBlogs] = useState({})
 
   const [foundUser, setFoundUser] = useState({})

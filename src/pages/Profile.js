@@ -124,7 +124,7 @@ const Profile = () => {
 
     <div className='bg-slate-900 bg-opacity-90'>
       <div className='flex justify-center flex-col items-center '>
-        <div style={{ boxShadow: "1px 1px 8px #3333" }} className='overflow-hidden p-3 w-80 h-80'>
+        <div style={{ boxShadow: "1px 1px 8px #3333" }} className='overflow-hidden w-80 h-80'>
           <label for="upload-photo">
             <BsPlusCircle className=' absolute ml-14 top-80 mt-6 text-5xl bg-amber-50 rounded-full' />
           </label>
@@ -162,8 +162,8 @@ const Profile = () => {
                   </div>
                 }
               </div>
-              <div key={item._id} className={`${updatebox ? "hidden" : "visible"} p-2 bg-gray-200 rounded-xl shadow-black shadow-xl  px-2 flex flex-col items-stretch max-w-xl text-center  my-8 transition`} >
-                <div className=' w-full bg-amber-100 flex justify-between items-center px-4'>
+              <div key={item._id} className={`${updatebox ? "hidden" : "visible"} bg-gray-200 rounded-xl shadow-black shadow-xl flex flex-col items-stretch max-w-xl text-center  my-8 transition`} >
+                <div className=' w-full bg-amber-100 flex justify-between items-center px-6'>
                   {item.user === auth.user.userId &&
                     <div style={{ marginLeft: "-22px" }} className="m-3 w-fit text-left text-white rounded-xl flex justify-start items-center">
                       <BiPencil onClick={() => {

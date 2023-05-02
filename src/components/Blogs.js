@@ -136,8 +136,8 @@ const Blogs = () => {
 
                         blogs?.map(item => {
                             return <>
-                                <div key={item._id} className={` ${updatebox ? "hidden" : "visible"} p-2 flex flex-col items-stretch w-full h-full text-center my-8 bg-gray-100 transition rounded-xl shadow-black shadow-xl `} >
-                                    <div className=' w-full bg-amber-100 flex justify-around items-center flex-wrap px-2'>
+                                <div key={item._id} className={` ${updatebox ? "hidden" : "visible"} p-0 flex flex-col items-stretch w-full h-full text-center my-8 bg-gray-100 transition rounded-xl shadow-black shadow-xl `} >
+                                    <div className=' w-full bg-amber-100 rounded-md flex justify-around items-center flex-wrap px-2'>
                                         {item.user === auth?.user?.userId &&
                                             <div className="m-3 w-fit text-left text-white rounded-xl flex justify-start items-center">
                                                 <BiPencil onClick={() => {
@@ -216,7 +216,7 @@ const Blogs = () => {
                                     </div>
                                 </div>
                             </>
-                        }) : (<div className=" h-fit"><IsLoading /></div>)
+                        }) : blogs?.length==0?<div className="text-xl p-1 mt-12 shadow-md shadow-cyan-400 text-white animate-pulse">no blogs..</div> :(<div className=" h-fit"><IsLoading /></div>)
                 }
 
 

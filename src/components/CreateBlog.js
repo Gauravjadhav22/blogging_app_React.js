@@ -1,7 +1,5 @@
 import React, { useContext, useState } from 'react'
 import { MdDrafts } from 'react-icons/md'
-import { GoMention } from 'react-icons/go'
-import { FcPrivacy } from 'react-icons/fc'
 import { FaBlogger } from 'react-icons/fa'
 import axios from 'axios'
 import useAuth from '../hooks/useAuth'
@@ -16,36 +14,42 @@ const CreateBlog = () => {
     const [pictures, setPictures] = useState([])
 
     const [isloading, setLoading] = useState(false)
+    const [imgsuccess, setImgsuccess] = useState("")
     const [content, setContent] = useState("")
     const [draft, setDraft] = useState(false)
 
 
     const uploadImage = (files) => {
+       setLoading(true)
         const data = new FormData()
 
         Object.values(files).map((value) => {
-            setLoading(true)
             data.append("upload_preset", "blogApp")
             data.append("file", value)
             data.append("cloud_name", "dwmm1r1ph")
             axios.post("https://api.cloudinary.com/v1_1/dwmm1r1ph/image/upload", data).then((res) => {
                 setLoading(false)
                 pictures.push(res.data.secure_url)
+                setImgsuccess(true)
             })
                 .catch((err) => console.log(err))
         })
+
+
 
     }
 
     const postBlog = async () => {
         try {
 
-           await privateRequest.post(BASE_URL, {
+            await privateRequest.post(BASE_URL, {
                 content, draft, pictures
             })
             getBlogs()
+            setImgsuccess(false)
+            setLoading(false)
             setContent("")
-            setPictures("")
+            setPictures([])
             setDraft(false)
 
         } catch (error) {
@@ -69,12 +73,12 @@ const CreateBlog = () => {
 
                                 </textarea>
                             </div>
-                            {isloading && <h1 className='text-4xl text-gray-500'>Loading....</h1>}
+                            {isloading && <h1 className='text-xl text-amber-300'>Image being uploaded...</h1>}
+                            {imgsuccess && <h1 className='text-xl text-amber-300'>image uploaded click on upload btn...</h1>}
 
                             <br />
                             <div>
-                                <span className='bg-blue-100 font-thin'>Upload</span>
-                                <input onChange={(e) => uploadImage(e.target.files)} type='file' className='p-2 border-2 border-gray-400 m-2 xl:w-fit lg:w-fit md:w-fit sm:w-60' multiple />
+                                {!isloading && !imgsuccess && <input onChange={(e) => uploadImage(e.target.files)} type='file' className='p-2 border-2 border-gray-400 m-2 xl:w-fit lg:w-fit md:w-fit sm:w-60' multiple />}
 
                             </div>
                             <br />
